@@ -19,7 +19,7 @@ const oauth = {
 };
 const origins = {
   // Ensure all domains are added to the security cert creation
-  app: process.env.LIVE ? 'https://sdkapp.petrov.ca' : 'https://sdkapp.example.com',
+  app: process.env.LIVE ? 'https://react.petrov.ca' : 'https://react.example.com',
   forgeops: 'https://default.forgeops.petrov.ca',
   mock: 'https://auth.example.com',
   resource: 'https://api.example.com',
@@ -28,17 +28,17 @@ const paths = {
   am: '/am',
 };
 const ports = {
-  app: '8443',
-  forgeops: '443',
-  mock: '9443',
-  resource: '9443',
+  app: '8444',
+  forgeops: '444',
+  mock: '9444',
+  resource: '9444',
 };
 const realm = 'root';
 const testUsers = [
   {
     // Already exists in forgeops...
-    pw: 'password',
-    un: 'sdkuser',
+    pw: 'Ch4ng3!t',
+    un: 'demo',
   },
 ];
 

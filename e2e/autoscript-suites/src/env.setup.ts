@@ -13,13 +13,13 @@ import { setup as setupDevServer } from 'jest-dev-server';
 const liveServers = [
   {
     command: 'npm run start:server:live',
-    port: 9443,
+    port: 9444,
   },
 ];
 const mockServers = [
   {
     command: 'npm run start:server',
-    port: 9443,
+    port: 9444,
   },
 ];
 const servers = process.env.LIVE === 'true' ? liveServers : mockServers;

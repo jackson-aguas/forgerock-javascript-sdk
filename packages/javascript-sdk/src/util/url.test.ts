@@ -47,8 +47,8 @@ describe('The URL utility', () => {
     const baseUrls = [
       'http://domain.com',
       'http://domain.com/',
-      'https://domain.com:8443',
-      'https://domain.com:8443/',
+      'https://domain.com:8444',
+      'https://domain.com:8444/',
     ];
     const basePath = '/a/b/c';
 

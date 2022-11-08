@@ -63,7 +63,7 @@
         "open": true,
         "ssl": true,
         "watch": true,
-        "port": 8443,
+        "port": 8444,
         "host": "angular.example.com",
         "browserTarget": "angular-todo:build:development"
       },

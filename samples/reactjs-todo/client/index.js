@@ -7,6 +7,7 @@
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
+import { Config } from '@forgerock/javascript-sdk';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -19,6 +20,18 @@ import { AppContext, useGlobalStateMgmt } from './global-state';
  * Webpack will detect this and transpile, process and generate the needed CSS file
  */
 import './styles/index.scss';
+
+Config.set({
+  clientId: WEB_OAUTH_CLIENT,
+  redirectUri: `${APP_URL}/callback`,
+  scope: 'openid profile email',
+  serverConfig: {
+    baseUrl: AM_URL,
+    timeout: '5000',
+  },
+  realmPath: REALM_PATH,
+  tree: JOURNEY_LOGIN,
+});
 
 /**
  * Initialize the React application

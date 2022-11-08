@@ -7,7 +7,7 @@ const config: PlaywrightTestConfig = {
   testDir: 'e2e',
   webServer: {
     command: 'nx run autoscript-apps:serve',
-    port: 8443,
+    port: 8444,
     timeout: 100000,
   },
   use: {

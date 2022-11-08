@@ -32,6 +32,8 @@ describe('The URL utility', () => {
       ['https://domain.com:443/', 'https://domain.com'],
       ['https://domain.com:8443', 'https://domain.com:8443'],
       ['https://domain.com:8443/', 'https://domain.com:8443'],
+      ['https://domain.com:8444', 'https://domain.com:8444'],
+      ['https://domain.com:8444/', 'https://domain.com:8444'],
     ];
 
     tests.forEach((x) => {

@@ -32,7 +32,7 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "autoscript-apps:build",
-        "port": 8443
+        "port": 8444
       },
       "configurations": {
         "development": {

@@ -7,7 +7,7 @@ const config: PlaywrightTestConfig = {
   testDir: 'e2e',
   webServer: {
     command: 'nx run autoscript-apps:serve',
-    port: 8444,
+    port: 8445,
     timeout: 100000,
   },
   use: {
@@ -15,7 +15,7 @@ const config: PlaywrightTestConfig = {
     navigationTimeout: 50000,
     screenshot: process.env.CI ? 'only-on-failure' : 'off',
     video: process.env.CI ? 'retain-on-failure' : 'off',
-    baseURL: 'https://react.example.com:8444',
+    baseURL: 'https://react.example.com:8445',
     ignoreHTTPSErrors: true,
     geolocation: { latitude: 24.9884, longitude: -87.3459 },
     permissions: [],

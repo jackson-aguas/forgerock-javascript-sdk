@@ -84,7 +84,7 @@ module.exports = (config) => {
       library: 'forgerock',
       libraryTarget: 'umd',
       path: path.resolve(__dirname, '../../dist/e2e/autoscript-apps'),
-      publicPath: 'https://react.example.com:8444/',
+      publicPath: 'https://react.example.com:8445/',
       umdNamedDefine: true,
     },
     devServer: {

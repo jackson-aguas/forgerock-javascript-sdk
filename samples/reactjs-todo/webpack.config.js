@@ -40,7 +40,7 @@ module.exports = (config) => {
         logging: 'none',
         overlay: false,
       },
-      port: 8444,
+      port: 8445,
     },
   };
 };

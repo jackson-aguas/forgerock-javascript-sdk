@@ -28,10 +28,10 @@ const paths = {
   am: '/am',
 };
 const ports = {
-  app: '8444',
-  forgeops: '444',
-  mock: '9444',
-  resource: '9444',
+  app: '8445',
+  forgeops: '445',
+  mock: '9445',
+  resource: '9445',
 };
 const realm = 'root';
 const testUsers = [

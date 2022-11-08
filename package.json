@@ -12,7 +12,7 @@
     "prepublishOnly": "npm run clean && npm i && npm run build && npm t",
     "playwright-test": "playwright test",
     "start:e2e": "nx run autoscript-apps:serve",
-    "start:samples": "ws -d samples -p 8444 --cors.origin null --cors.credentials --https",
+    "start:samples": "ws -d samples -p 8445 --cors.origin null --cors.credentials --https",
     "start:server": "nx run mock-api:serve",
     "start:server:live": "NODE_ENV=LIVE nx run mock-api:serve:live",
     "start:angular-todo": "nx run angular-todo:config && nx run-many --target=serve --projects=todo-api,angular-todo",

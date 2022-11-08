@@ -84,12 +84,12 @@ module.exports = (config) => {
       library: 'forgerock',
       libraryTarget: 'umd',
       path: path.resolve(__dirname, '../../dist/e2e/autoscript-apps'),
-      publicPath: 'https://sdkapp.example.com:8443/',
+      publicPath: 'https://react.example.com:8444/',
       umdNamedDefine: true,
     },
     devServer: {
       ...config.devServer,
-      host: 'sdkapp.example.com',
+      host: 'react.example.com',
       server: 'https',
       compress: true,
       headers: {

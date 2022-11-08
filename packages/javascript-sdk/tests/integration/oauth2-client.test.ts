@@ -7,7 +7,7 @@ jest.mock('../../src/config', () => {
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     get() {
       return {
-        redirectUrl: 'https://sdkapp.example.com/',
+        redirectUrl: 'https://react.example.com/',
         clientId: 'OAuth2ClientID',
         scope: 'openid email profile',
         serverConfig: {

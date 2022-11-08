@@ -15,7 +15,7 @@ const config: PlaywrightTestConfig = {
     navigationTimeout: 50000,
     screenshot: process.env.CI ? 'only-on-failure' : 'off',
     video: process.env.CI ? 'retain-on-failure' : 'off',
-    baseURL: 'https://sdkapp.example.com:8443',
+    baseURL: 'https://react.example.com:8444',
     ignoreHTTPSErrors: true,
     geolocation: { latitude: 24.9884, longitude: -87.3459 },
     permissions: [],

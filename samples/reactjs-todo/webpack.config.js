@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const fs = require('fs');
 
 module.exports = (config) => {
   const AM_URL = process.env.AM_URL;
@@ -29,18 +30,29 @@ module.exports = (config) => {
     devtool: 'source-map',
     devServer: {
       ...config.devServer,
-      host: 'react.example.com',
+      allowedHosts: 'all',
+      host: '0.0.0.0',
       headers: {
-        'Access-Control-Allow-Credentials': true,
-        'Access-Control-Allow-Origin': 'null',
+        'Access-Control-Allow-Origin': '*',
       },
-      server: 'https',
       compress: true,
       client: {
         logging: 'none',
         overlay: false,
       },
       port: 8445,
+      server: {
+        type: 'https',
+        options: {
+          cert: fs.readFileSync(
+            '/home/azureuser/bin/forgerock-javascript-sdk/samples/reactjs-todo/secrets/cert.pem',
+          ),
+          key: fs.readFileSync(
+            '/home/azureuser/bin/forgerock-javascript-sdk/samples/reactjs-todo/secrets/key.pem',
+          ),
+          ca: fs.readFileSync('/home/azureuser/.local/share/mkcert/rootCA.pem'),
+        },
+      },
     },
   };
 };

@@ -22,6 +22,7 @@ reports/*
 
 # Certificates
 *.pem
+*.p12
 
 # IDEs
 .vscode

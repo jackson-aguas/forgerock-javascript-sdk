@@ -24,11 +24,6 @@
     "test:unit": "nx affected --target=test",
     "watch": "nx run autoscript-apps:build:development"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "shx rm -rf dist/ && npm run format:staged && npm run lint && npm run build"
-    }
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ForgeRock/forgerock-javascript-sdk.git"

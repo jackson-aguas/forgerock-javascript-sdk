@@ -7,7 +7,11 @@
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
-import React from 'react';
+import { FRUser } from '@forgerock/javascript-sdk';
+import React, { useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { AppContext } from '../global-state';
 
 import Loading from '../components/utilities/loading';
 
@@ -16,5 +20,28 @@ import Loading from '../components/utilities/loading';
  * @returns {Object} - React component object
  */
 export default function Logout() {
+  const [_, { setAuthentication, setEmail, setUser }] = useContext(AppContext);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const logout = async () => {
+      try {
+        // Using SDK to logout user
+        FRUser.logout();
+
+        // Resetting app context
+        setAuthentication(false);
+        setEmail('');
+        setUser('');
+
+        // Navigate back to homepage
+        navigate('/');
+      } catch (err) {
+        console.error(`Error: logout; ${err}`);
+      }
+    };
+    logout();
+  }, [navigate, setAuthentication, setEmail, setUser]);
+
   return <Loading classes="pt-5" message="You're being logged out ..." />;
 }

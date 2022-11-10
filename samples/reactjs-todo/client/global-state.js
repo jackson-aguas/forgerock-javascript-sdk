@@ -98,8 +98,8 @@ export function useGlobalStateMgmt({ email, isAuthenticated, prefersDarkTheme, u
     {
       isAuthenticated: authenticated,
       email: mail,
-      theme,
       username: name,
+      theme,
     },
     {
       setAuthentication: setAuthenticationWrapper,

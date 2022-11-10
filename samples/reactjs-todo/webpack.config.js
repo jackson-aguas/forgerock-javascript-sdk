@@ -31,7 +31,7 @@ module.exports = (config) => {
     devServer: {
       ...config.devServer,
       allowedHosts: 'all',
-      host: '0.0.0.0',
+      host: 'react.example.com',
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
@@ -44,13 +44,13 @@ module.exports = (config) => {
       server: {
         type: 'https',
         options: {
-          cert: fs.readFileSync(
-            '/home/azureuser/bin/forgerock-javascript-sdk/samples/reactjs-todo/secrets/cert.pem',
-          ),
           key: fs.readFileSync(
-            '/home/azureuser/bin/forgerock-javascript-sdk/samples/reactjs-todo/secrets/key.pem',
+            '/Users/jackson.aguas/Documents/Projects/CIAM_Prudential/Demo/forgerock-javascript-sdk/samples/reactjs-todo/secrets/key.pem',
           ),
-          ca: fs.readFileSync('/home/azureuser/.local/share/mkcert/rootCA.pem'),
+          cert: fs.readFileSync(
+            '/Users/jackson.aguas/Documents/Projects/CIAM_Prudential/Demo/forgerock-javascript-sdk/samples/reactjs-todo/secrets/cert.pem',
+          ),
+          ca: fs.readFileSync(`/Users/jackson.aguas/Library/Application Support/mkcert/rootCA.pem`),
         },
       },
     },

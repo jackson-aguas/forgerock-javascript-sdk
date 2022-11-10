@@ -46,3 +46,5 @@ samples/*/public/app.*
 samples/angular-todo/src/environments/environment.ts
 todos/
 users/
+
+webpack.config.js

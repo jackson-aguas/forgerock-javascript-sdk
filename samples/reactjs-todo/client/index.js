@@ -7,7 +7,7 @@
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
-import { Config } from '@forgerock/javascript-sdk';
+import { Config, TokenStorage } from '@forgerock/javascript-sdk';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 
@@ -40,6 +40,13 @@ Config.set({
  */
 (async function initAndHydrate() {
   let isAuthenticated;
+  try {
+    isAuthenticated = !!(await TokenStorage.get());
+    console.log(isAuthenticated);
+  } catch (err) {
+    console.error(`Error: token retrieval for hydration; ${err}`);
+  }
+
   const prefersDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const email = window.sessionStorage.getItem('sdk_email');
   const username = window.sessionStorage.getItem('sdk_username');

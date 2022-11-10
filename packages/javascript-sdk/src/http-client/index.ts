@@ -74,6 +74,7 @@ abstract class HttpClient extends Dispatcher {
       res = await this._request(options, true);
     }
 
+    console.log(options);
     if (options.authorization && options.authorization.handleStep) {
       if (res.redirected && examineForIGAuthz(res)) {
         hasIG = true;

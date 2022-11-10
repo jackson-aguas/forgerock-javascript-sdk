@@ -7,8 +7,11 @@
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
-import { FRAuth } from '@forgerock/javascript-sdk';
-import React, { useEffect, useState } from 'react';
+import { FRAuth, TokenManager, UserManager } from '@forgerock/javascript-sdk';
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { AppContext } from '../../global-state';
 
 import Loading from '../utilities/loading';
 import Alert from './alert';
@@ -22,6 +25,9 @@ import Unknown from './unknown';
  */
 export default function Form() {
   const [step, setStep] = useState(null);
+  const [isAuthenticated, setAuthentication] = useState(false);
+  const [_, methods] = useContext(AppContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getStep = async () => {
@@ -34,7 +40,26 @@ export default function Form() {
       }
     };
     getStep();
-  }, []);
+    const oauthFlow = async () => {
+      try {
+        const tokens = await TokenManager.getTokens();
+        console.log(tokens);
+        const user = await UserManager.getCurrentUser();
+        console.log(user);
+
+        methods.setUser(user.name);
+        methods.setEmail(user.email);
+        methods.setAuthentication(true);
+
+        navigate('/');
+      } catch (err) {
+        console.log(`Error: token request; ${err}`);
+      }
+    };
+    if (isAuthenticated) {
+      oauthFlow();
+    }
+  }, [isAuthenticated, methods, navigate]);
 
   const mapCallbacksToComponents = (cb, idx) => {
     const name = cb?.payload?.input?.[0].name;
@@ -59,9 +84,12 @@ export default function Form() {
         className="cstm_form"
         onSubmit={(e) => {
           e.preventDefault();
-          let getStep = async () => {
+          const getStep = async () => {
             try {
               let nextStep = await FRAuth.next(step);
+              if (nextStep.type === 'LoginSuccess') {
+                setAuthentication(true);
+              }
               console.log(nextStep);
               setStep(nextStep);
             } catch (err) {

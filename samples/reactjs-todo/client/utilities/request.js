@@ -8,7 +8,8 @@
  * of the MIT license. See the LICENSE file for details.
  */
 // eslint-disable-next-line no-unused-vars
-import { API_URL, DEBUGGER } from '../constants';
+import { HttpClient } from '@forgerock/javascript-sdk';
+import { API_URL } from '../constants';
 
 /**
  * @function request - A convenience function for wrapping around HttpClient
@@ -20,17 +21,23 @@ import { API_URL, DEBUGGER } from '../constants';
 export default async function apiRequest(resource, method, data) {
   let json;
   try {
-    const response = await fetch(`${API_URL}/${resource}`, {
-      body: data && JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
+    let options = {
+      url: `${API_URL}/${resource}`,
+      init: {
+        body: data && JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+        method: method,
       },
-      method: method,
-    });
+    };
+    const response = await HttpClient.request(options);
     if (!response.ok) {
       throw new Error(`Status ${response.status}: API request failed`);
     }
     json = await response.json();
+    if (json) console.log(json);
   } catch (err) {
     console.error(`Error: API request; ${err}`);
 
